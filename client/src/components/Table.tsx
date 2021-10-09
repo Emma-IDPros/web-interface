@@ -9,7 +9,7 @@ interface TableProps {
 const CoordTable: React.FC<TableProps> = ({ coordList }) => {
   return (
     <div>
-      <Table variant="simple">
+      <Table variant="simple" size="sm">
         <Thead>
           <Tr>
             <Th>X</Th>
