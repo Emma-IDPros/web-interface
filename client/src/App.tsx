@@ -1,5 +1,14 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button, Switch, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Switch,
+  VStack,
+  Text,
+  HStack,
+  Divider,
+} from "@chakra-ui/react";
 import { Coord, deleteCoords, getCoords } from "./api/api";
 import CoordTable from "./components/Table";
 import { FETCH_PERIOD } from "./configs";
@@ -24,12 +33,27 @@ const App: FC = () => {
 
   return (
     <div>
-      <VStack justifyContent="center">
-        <Switch onChange={() => setToggleFetch(!toggleFetch)}></Switch>
-        <Button onClick={() => deleteCoords()}>Delete</Button>
-        <ScatterPlot coords={coords}></ScatterPlot>
+      <Flex direction="row" justifyContent="space-evenly" m={4}>
+        <Box bgColor="gray.900" borderRadius="lg" p={4}>
+          <HStack>
+            <Text>Start Recording</Text>
+            <Switch
+              pt="4.5px"
+              onChange={() => setToggleFetch(!toggleFetch)}
+            ></Switch>
+          </HStack>
+        </Box>
+        <Box pt="4.5px">
+          <Button colorScheme="red" onClick={() => deleteCoords()}>
+            Delete Data
+          </Button>
+        </Box>
+      </Flex>
+      <Divider my={4}></Divider>
+      <HStack justifyContent="center">
         <CoordTable coordList={coords}></CoordTable>
-      </VStack>
+        <ScatterPlot coords={coords}></ScatterPlot>
+      </HStack>
     </div>
   );
 };
