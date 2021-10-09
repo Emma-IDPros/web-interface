@@ -8,8 +8,8 @@ generator client {
 }
 
 model Coord {
-    id        Int @id @default(autoincrement())
+    id        Int     @id @default(autoincrement())
     createdAt Int
-    X         Int
-    Y         Int
+    X         Decimal
+    Y         Decimal
 }
