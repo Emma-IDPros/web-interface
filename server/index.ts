@@ -6,7 +6,7 @@ const prisma = new PrismaClient({ log: ["query"] });
 const app: Application = express();
 app.use(cors());
 app.use(express.json());
-const PORT: number | string = process.env.PORT || 5000;
+const PORT: number | string = process.env.PORT || 6969;
 
 app.get("/coord/:x/:y", async (req: Request, res: Response) => {
   const x: number = parseFloat(req.params.x);
