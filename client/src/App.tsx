@@ -50,10 +50,10 @@ const App: FC = () => {
         </Box>
       </Flex>
       <Divider my={4}></Divider>
-      <HStack justifyContent="space-around">
-        <CoordTable coordList={coords}></CoordTable>
+      <VStack spacing={12}>
         <ScatterPlot coords={coords}></ScatterPlot>
-      </HStack>
+        <CoordTable coordList={coords}></CoordTable>
+      </VStack>
     </div>
   );
 };
