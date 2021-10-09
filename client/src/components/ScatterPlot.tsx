@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Plot from "react-plotly.js";
 import { Coord } from "src/api/api";
 
-type coordArrayObject = {
+export type coordArrayObject = {
   x: [] | number[];
   y: [] | number[];
 };
