@@ -3,6 +3,7 @@ import { Button, Switch, VStack } from "@chakra-ui/react";
 import { Coord, deleteCoords, getCoords } from "./api/api";
 import CoordTable from "./components/Table";
 import { FETCH_PERIOD } from "./configs";
+import ScatterPlot from "./components/ScatterPlot";
 
 const App: FC = () => {
   const [coords, setCoords] = useState<Coord[] | []>([]);
@@ -26,6 +27,7 @@ const App: FC = () => {
       <VStack justifyContent="center">
         <Switch onChange={() => setToggleFetch(!toggleFetch)}></Switch>
         <Button onClick={() => deleteCoords()}>Delete</Button>
+        <ScatterPlot coords={coords}></ScatterPlot>
         <CoordTable coordList={coords}></CoordTable>
       </VStack>
     </div>
