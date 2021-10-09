@@ -6,6 +6,7 @@ import { deconstructCoords } from "src/utils";
 export type coordArrayObject = {
   x: [] | number[];
   y: [] | number[];
+  createdAt: [] | number[];
 };
 
 interface ScatterPlotProps {
@@ -16,6 +17,7 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({ coords }) => {
   const [coordArrayObject, setCoordArrayObject] = useState<coordArrayObject>({
     x: [],
     y: [],
+    createdAt: [],
   });
 
   useEffect(() => {
@@ -29,12 +31,12 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({ coords }) => {
           {
             x: coordArrayObject.x,
             y: coordArrayObject.y,
-            type: "scatter",
+            type: "scattergl",
             mode: "markers",
-            marker: { color: "red" },
+            marker: { color: coordArrayObject.createdAt },
           },
         ]}
-        layout={{ width: 320, height: 240, title: "A Fancy Plot" }}
+        layout={{ width: 600, height: 600 }}
       />
     </div>
   );
