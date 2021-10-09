@@ -34,9 +34,16 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({ coords }) => {
             type: "scattergl",
             mode: "markers",
             marker: { color: coordArrayObject.createdAt },
+            colorscale: "RdBu",
           },
         ]}
-        layout={{ width: 600, height: 600 }}
+        layout={{
+          width: 600,
+          height: 600,
+          paper_bgcolor: "#171923",
+          plot_bgcolor: "#171923",
+          margin: { pad: 0, l: 60, r: 60, t: 60, b: 60 },
+        }}
       />
     </div>
   );
