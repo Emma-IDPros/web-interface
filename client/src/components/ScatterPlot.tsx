@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Plot from "react-plotly.js";
 import { Coord } from "src/api/api";
+import { deconstructCoords } from "src/utils";
 
 export type coordArrayObject = {
   x: [] | number[];
@@ -17,20 +18,21 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({ coords }) => {
     y: [],
   });
 
-  useEffect(() => {}, [coords]);
+  useEffect(() => {
+    setCoordArrayObject(deconstructCoords(coords));
+  }, [coords]);
 
   return (
     <div>
       <Plot
         data={[
           {
-            x: [1, 2, 3],
-            y: [2, 6, 3],
+            x: coordArrayObject.x,
+            y: coordArrayObject.y,
             type: "scatter",
-            mode: "lines+markers",
+            mode: "markers",
             marker: { color: "red" },
           },
-          { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
         ]}
         layout={{ width: 320, height: 240, title: "A Fancy Plot" }}
       />
