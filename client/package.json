@@ -55,6 +55,8 @@
     ]
   },
   "devDependencies": {
-    "@types/node-fetch": "^3.0.3"
+    "@types/node-fetch": "^3.0.3",
+    "@types/plotly.js": "^1.54.16",
+    "@types/react-plotly.js": "^2.5.0"
   }
 }
