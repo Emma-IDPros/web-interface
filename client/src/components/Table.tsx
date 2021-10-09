@@ -20,7 +20,7 @@ const CoordTable: React.FC<TableProps> = ({ coordList }) => {
         <Tbody>
           {coordList.map(({ X, Y, createdAt }, idx) => (
             <>
-              <Tr key={idx}>
+              <Tr key={createdAt}>
                 <Td>{X}</Td>
                 <Td>{Y}</Td>
                 <Td>{createdAt}</Td>
