@@ -8,6 +8,7 @@ import {
   Text,
   HStack,
   Divider,
+  useToast,
 } from "@chakra-ui/react";
 import { Coord, deleteCoords, getCoords } from "./api/api";
 import CoordTable from "./components/Table";
@@ -17,6 +18,19 @@ import ScatterPlot from "./components/ScatterPlot";
 const App: FC = () => {
   const [coords, setCoords] = useState<Coord[] | []>([]);
   const [toggleFetch, setToggleFetch] = useState<boolean>(false);
+  const toast = useToast();
+
+  const handleDelete = () =>
+    deleteCoords().then((res) =>
+      toast({
+        title: "Deleted",
+        description: `Deleted ${res.count} coordinates from the database`,
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top-right",
+      })
+    );
 
   useEffect(() => {
     if (toggleFetch) {
@@ -44,7 +58,7 @@ const App: FC = () => {
           </HStack>
         </Box>
         <Box pt="4.5px">
-          <Button colorScheme="red" onClick={() => deleteCoords()}>
+          <Button colorScheme="red" onClick={handleDelete}>
             Delete Data
           </Button>
         </Box>
