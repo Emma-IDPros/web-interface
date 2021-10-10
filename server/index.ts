@@ -19,7 +19,7 @@ app.get("/coord/:x/:y", async (req: Request, res: Response) => {
 });
 
 app.get("/coords", async (req: Request, res: Response) => {
-  res.send(await prisma.coord.findMany({ take: 100 }));
+  res.send(await prisma.coord.findMany());
 });
 
 app.get("/delete", async (req: Request, res: Response) => {
