@@ -5,6 +5,10 @@ export interface Coord {
   Y: number;
 }
 
+export interface DeleteResponse {
+  count: number;
+}
+
 const link: string = "http://localhost:6969/";
 
 const get = async (endpoint: string) => {
@@ -17,5 +21,6 @@ export const getCoords = async () => {
 };
 
 export const deleteCoords = async () => {
-  get("delete");
+  const res: DeleteResponse = await get("delete");
+  return res;
 };
