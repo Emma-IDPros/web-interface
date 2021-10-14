@@ -13,3 +13,9 @@ model Coord {
     X         Decimal
     Y         Decimal
 }
+
+model Message {
+    id        Int    @id @default(autoincrement())
+    createdAt BigInt
+    message   String
+}
