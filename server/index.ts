@@ -1,7 +1,8 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient({ log: ["query"] });
+// const prisma = new PrismaClient({ log: ["query"] });
+const prisma = new PrismaClient();
 
 const app: Application = express();
 app.use(cors());
@@ -21,6 +22,8 @@ app.get("/coord/:x/:y", async (req: Request, res: Response) => {
 app.get("/message/:message", async (req: Request, res: Response) => {
   const message: string = req.params.message;
   const createdAt = Date.now();
+  const time: string = new Date().toLocaleTimeString();
+  console.log(`${message}                 [${time}]`);
 
   await prisma.message.create({ data: { message, createdAt } });
 
