@@ -16,6 +16,6 @@ model Coord {
 
 model Message {
     id        Int    @id @default(autoincrement())
-    createdAt BigInt
+    createdAt Int
     message   String
 }
