@@ -18,12 +18,29 @@ app.get("/coord/:x/:y", async (req: Request, res: Response) => {
   res.send("success");
 });
 
+app.get("/message/:message", async (req: Request, res: Response) => {
+  const message: string = req.params.message;
+  const createdAt = Date.now();
+
+  await prisma.message.create({ data: { message, createdAt } });
+
+  res.send("success");
+});
+
 app.get("/coords", async (req: Request, res: Response) => {
   res.send(await prisma.coord.findMany());
 });
 
-app.get("/delete", async (req: Request, res: Response) => {
+app.get("/messages", async (req: Request, res: Response) => {
+  res.send(await prisma.message.findMany());
+});
+
+app.get("/delete/coords", async (req: Request, res: Response) => {
   res.send(await prisma.coord.deleteMany({}));
+});
+
+app.get("/delete/messages", async (req: Request, res: Response) => {
+  res.send(await prisma.message.deleteMany({}));
 });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
